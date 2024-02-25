@@ -301,7 +301,7 @@ class InstagramLocationScraper(_InstagramCommonScraper):
 		self._pageIDKey = 'next_page'
 		self._queryHash = '1b84447a4d8b6d6d0426fefb34514485'
 		self._variablesFormat = '{{"id":"{pageID}","first":50,"after":"{endCursor}"}}'
-		self._apiUrl = f"https://www.instagram.com/api/v1/locations/web_info/?location_id={locationId}"
+		self._apiUrl = f"https://www.instagram.com/api/v1/locations/logged_out_web_info/?location_id={locationId}"
 		self._locationId = locationId
 
 	@classmethod
