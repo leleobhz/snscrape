@@ -144,15 +144,15 @@ class _InstagramCommonScraper(snscrape.base.Scraper):
 		if r.status_code != 200:
 			return True, None
 		if (match := re.search(
-				r'\\"csrf_token\\":\\"([\da-zA-Z]+)\\",',
+				r'\\"csrftoken\\":\\"([\da-zA-Z]+)\\",',
 				r.text)):
 			_logger.debug('Found csrf token in HTML')
-			self._headers['X-Csrftoken'] = match.group(1)
+			self._headers['x-csrftoken'] = match.group(1)
 		if (match := re.search(
-				r'"X-IG-App-ID":"(\d+)"',
+				r'"x-ig-app-id":"(\d+)"',
 				r.text)):
-			_logger.debug('Found X-IG-App-ID token in HTML')
-			self._headers['X-IG-App-ID'] = match.group(1)
+			_logger.debug('Found x-ig-app-id token in HTML')
+			self._headers['x-ig-app-id'] = match.group(1)
 
 		return True, None
 
