@@ -92,7 +92,9 @@ class User(snscrape.base.Item):
 class _InstagramCommonScraper(snscrape.base.Scraper):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		self._headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+		self._headers = {
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+                }
 		self._initialPage = None
 		self._apiUrl = None
 
@@ -301,7 +303,7 @@ class InstagramLocationScraper(_InstagramCommonScraper):
 		self._pageIDKey = 'next_page'
 		self._queryHash = '1b84447a4d8b6d6d0426fefb34514485'
 		self._variablesFormat = '{{"id":"{pageID}","first":50,"after":"{endCursor}"}}'
-		self._apiUrl = f"https://www.instagram.com/api/v1/locations/logged_out_web_info/?location_id={locationId}"
+		self._apiUrl = f"https://www.instagram.com/api/v1/locations/web_info/?location_id={locationId}&show_nearby=true"
 		self._locationId = locationId
 
 	@classmethod
